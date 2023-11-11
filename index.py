@@ -1,13 +1,24 @@
 from random import randint
 from time import sleep
-print('-=' * 40)
-print('{:^80}'.format('TENTE ADIVINHAR O NÚMERO DE 0 À 10 QUE ESTOU PENSANDO...'))
-print('{:^80}'.format('VOCÊ TEM 4 TENTATIVAS. BOA SORTE!!'))
+from suporte import *
+cabeçalho()
 print('O ganhador, ganha um PC GAMER.')
-print('-=' * 40)
+
 computador = randint(0, 10)
-premio = ('Celular', 'Tênis', 'Pc Gamer')
+premio = ['Celular', 'Tênis', 'Pc Gamer']
 sorteio = randint(0, 3)
+
+for c in range(0, 5):
+    jogador = int(input('Digite um numero (0 à 10): '))
+
+
+
+
+
+
+
+
+'''
 pessoas = 1
 contador = 0
 while pessoas != 5:
@@ -19,7 +30,7 @@ while pessoas != 5:
                 break
             print('Número invalido. Tente novamente')
         contador += 1
-        sleep(1)
+        
         if jogagor == computador:
             print('PARABÉNS, Você me venceu')
             print(f'Você ganhou um {premio[sorteio]}')
@@ -35,3 +46,5 @@ while pessoas != 5:
     pessoas += 1
 
 print(f'Tentativas {contador}')
+
+'''
