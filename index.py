@@ -1,37 +1,32 @@
 from random import randint
 from time import sleep
-print('-=' * 40)
-print('{:^80}'.format('TENTE ADIVINHAR O NÚMERO DE 0 À 10 QUE ESTOU PENSANDO...'))
-print('{:^80}'.format('VOCÊ TEM 4 TENTATIVAS. BOA SORTE!!'))
-print('O ganhador, ganha um PC GAMER.')
-print('-=' * 40)
+from suporte import *
+
+#programa principal
+cabeçalho()
 computador = randint(0, 10)
-premio = ('Celular', 'Tênis', 'Pc Gamer')
+premio = ['Celular', 'Tênis', 'Pc Gamer']
 sorteio = randint(0, 3)
-pessoas = 1
-contador = 0
-while pessoas != 5:
-    for cont in range(0, 4):
-        print(f'{pessoas} PARTECIPANTE.')
-        while True:
-            jogagor = int(input('Digite um número: '))
-            if (jogagor >= 0) and (jogagor <= 10):
-                break
-            print('Número invalido. Tente novamente')
-        contador += 1
-        sleep(1)
-        if jogagor == computador:
-            print('PARABÉNS, Você me venceu')
-            print(f'Você ganhou um {premio[sorteio]}')
-            print('-=' * 15)
-            break
+ok = False
+
+for contador in range(1, 5):
+    print(f'Tentativa - {contador} ')
+    jogador = verificação('Digite um numero (0 à 10):')
+    sleep(0.8)
+    if jogador == computador:
+        print(f'PARABÉNS, Você ganhou ', end='')
+        print(premio[sorteio])
+        premio.remove(f'{premio[sorteio]}')
+        if contador != 4:
+            resp = str(input('Quer continuar [S/N]: ')).upper()[0]
+            if resp in 'N':
+                ok = True
+    else:
+        if computador > jogador:
+            print('Você perdeu, tente novamente um numero MAIOR...')
         else:
-            if computador > jogagor:
-                print('Você perdeu, tente novamente um numero maior...')
-            else:
-                print('Você perdeu, tente novamente um numero menor...')
-        print('-=' * 20)
+            print('Você perdeu, tente novamente um numero MENOR..')
+    if ok:
+        break
 
-    pessoas += 1
-
-print(f'Tentativas {contador}')
+    print('-' * 25)
