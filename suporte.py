@@ -7,11 +7,18 @@ def cabeçalho():
 
 def verificação(msg):
     while True:
-        jogador = int(input(f'{msg} '))
-        if 0 <= jogador <= 10:
+        try:
+            jogador = int(input(f'{msg} '))
+        except (ValueError, TypeError):
+            print('Erro! Informe um numero interio')
+        except (KeyboardInterrupt):
+            print('Volte sempre')
             break
         else:
-            print('ERRO! Informe um valor entre 0 é 10')
+            if 0 <= jogador <= 10:
+                break
+            else:
+                print('Erro! Escolha um numero de 0 à 10')
     return jogador
 
 
