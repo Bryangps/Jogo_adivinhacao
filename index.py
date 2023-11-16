@@ -5,14 +5,14 @@ from suporte import *
 
 #programa principal
 cabeçalho()
-pessoas = cadastro('Quantos participantes?') #Aqui foi feito um função onde vai fazer os cadastro dos participantes
-tot = len(pessoas) # Para saber quantas pessoa foram cadastrada
+#Aqui foi feito um função onde vai fazer os cadastro dos participantes
+pessoas = cadastro('Quantos participantes?')
+
+tot = len(pessoas)
 cont = 0
 while cont != tot:
     computador = randint(0, 10)
-    #Vai informa o particpante
     print(f'Paricipante {pessoas[cont]["nome"]} tem 3 tentativas')
-
     for contador in range(1, 4):
         print(f'Tentativa - {contador} ')
         jogador = verificação('Digite um numero (0 à 10):')
