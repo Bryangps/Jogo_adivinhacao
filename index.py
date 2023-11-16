@@ -5,17 +5,20 @@ from suporte import *
 
 #programa principal
 cabeçalho()
-#Aqui foi feito um função onde vai fazer os cadastro dos participantes
-pessoas = cadastro('Quantos participantes?')
+qtd = quantidade('Quantos participantes?')
+pessoas = cadastro(qtd)
 
 tot = len(pessoas)
 cont = 0
+
 while cont != tot:
     computador = randint(0, 10)
     print(f'Paricipante {pessoas[cont]["nome"]} tem 3 tentativas')
     for contador in range(1, 4):
         print(f'Tentativa - {contador} ')
         jogador = verificação('Digite um numero (0 à 10):')
+        if jogador < 0:
+            break
         sleep(0.8)
         if jogador != computador:
             if computador > jogador:
@@ -28,6 +31,4 @@ while cont != tot:
         print('-' * 25)
     print('-=' * 18)
     cont += 1
-
-
 
