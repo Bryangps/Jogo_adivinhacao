@@ -1,12 +1,11 @@
-def cabeçalho():
+def cabecalho():
     print('-' * 70)
     print(f'TENTE ADIVINHAR O NÚMERO DE 0 À 10 QUE ESTOU PENSANDO...'.center(70))
     print('VOCÊ TEM 3 TENTATIVAS. BOA SORTE!!'.center(70))
     print('-' * 70)
 
 
-def verificação(msg):
-    global jogador
+def verificacao(msg):
     while True:
         try:
             jogador = int(input(f'{msg} '))
@@ -32,15 +31,15 @@ def quantidade(msg):
             print('Erro! Informe um numero interio')
         except KeyboardInterrupt:
             print('\nVolte sempre')
-            break
+            return 0
         else:
             return pessoa
-        break
 
 
 def cadastro(qtd):
     lista = list()
     partici = dict()
+    ok = False
     for c in range(0, qtd):
         while True:
             try:
@@ -49,9 +48,8 @@ def cadastro(qtd):
                 print('Erro! Valor digitado invalido, informe seu nome')
             except (KeyboardInterrupt, NameError):
                 print('\nVolte sempre')
+                ok = True
                 break
-            except:
-                print('Informe seu nome')
             else:
                 if not partici['nome']:
                     print('O campo não pode estar vazio')
@@ -59,7 +57,8 @@ def cadastro(qtd):
                     print('Ops! O campo não pode ser um número.')
                 else:
                     break
-        while True:
+
+        while not ok:
             try:
                 partici['idade'] = int(input('Idade: '))
             except (ValueError, TypeError):

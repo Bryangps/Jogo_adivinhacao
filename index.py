@@ -1,13 +1,13 @@
 from random import randint
-import random
 from time import sleep
 from suporte import *
 
 #programa principal
-cabeçalho()
+cabecalho()
 qtd = quantidade('Quantos participantes?')
-pessoas = cadastro(qtd)
-
+if qtd != 0:
+    pessoas = cadastro(qtd)
+'''
 tot = len(pessoas)
 cont = 0
 
@@ -16,7 +16,7 @@ while cont != tot:
     print(f'Paricipante {pessoas[cont]["nome"]} tem 3 tentativas')
     for contador in range(1, 4):
         print(f'Tentativa - {contador} ')
-        jogador = verificação('Digite um numero (0 à 10):')
+        jogador = verificacao('Digite um numero (0 à 10):')
         if jogador < 0:
             break
         sleep(0.8)
@@ -31,4 +31,4 @@ while cont != tot:
         print('-' * 25)
     print('-=' * 18)
     cont += 1
-
+'''
