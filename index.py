@@ -3,30 +3,29 @@ from time import sleep
 from suporte import *
 
 #programa principal
-cabeçalho()
-computador = randint(0, 10)
-premio = ['Celular', 'Tênis', 'Pc Gamer']
-sorteio = randint(0, 3)
-ok = False
+cabecalho()
+qtd = quantidade('Quantos participantes?')
+pessoas = cadastro(qtd)
 
-for contador in range(1, 5):
-    print(f'Tentativa - {contador} ')
-    jogador = verificação('Digite um numero (0 à 10):')
-    sleep(0.8)
-    if jogador == computador:
-        print(f'PARABÉNS, Você ganhou ', end='')
-        print(premio[sorteio])
-        premio.remove(f'{premio[sorteio]}')
-        if contador != 4:
-            resp = str(input('Quer continuar [S/N]: ')).upper()[0]
-            if resp in 'N':
-                ok = True
-    else:
-        if computador > jogador:
-            print('Você perdeu, tente novamente um numero MAIOR...')
+tot = len(pessoas)
+cont = 0
+while cont != tot:
+    computador = randint(0, 10)
+    print(f'Paricipante {pessoas[cont]["nome"]} tem 3 tentativas')
+    for tente in range(1, 4):
+        print(f'Tentativa - {tente} ')
+        jogador = verificacao('Digite um numero (0 à 10):')
+        if jogador < 0:
+            break
+        sleep(0.8)
+        if jogador != computador:
+            if computador > jogador:
+                print(f'\033[31mVocê perdeu, tente novamente um numero {"\033[33mMAIOR\033[m"}...\033[m')
+            else:
+                print(f'\033[31mVocê perdeu, tente novamente um numero {"\033[33mMENOR\033[m"}...\033[m')
         else:
-            print('Você perdeu, tente novamente um numero MENOR..')
-    if ok:
-        break
+            print(f'PARABÉNS {pessoas[cont]['nome']}!, Você ganhou.')
+            break
+        print('-' * 40)
+    cont += 1
 
-    print('-' * 25)
