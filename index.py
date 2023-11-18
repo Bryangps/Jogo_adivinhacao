@@ -28,4 +28,4 @@ while cont != tot:
             break
         print('-' * 40)
     cont += 1
-print('ola')
+
