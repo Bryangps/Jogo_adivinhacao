@@ -1,4 +1,4 @@
-#computador_vs_jogador
+#Jogo de adivinhação 
 <br>
 
 Foi desenvolvido um jogo basico, com intuito de aplicar os meus conhecimento adiquirido, o jogo tem a sequinte funcionalidade: 
