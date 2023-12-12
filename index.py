@@ -5,13 +5,15 @@ from suporte import *
 #programa principal
 cabecalho()
 qtd = quantidade('Quantos participantes?')
-pessoas = cadastro(qtd)
+pessoas = Pessoa(qtd)
+pessoas.cadastro()
 
-tot = len(pessoas)
+'''
+tot = len(pessoas.cadastro())
 cont = 0
 while cont != tot:
     computador = randint(0, 10)
-    print(f'Paricipante {pessoas[cont]["nome"]} tem 3 tentativas')
+    print(f'Paricipante {pessoas.cadastro()[cont]["nome"]} tem 3 tentativas')
     for tente in range(1, 4):
         print(f'Tentativa - {tente} ')
         jogador = verificacao('Digite um numero (0 à 10):')
@@ -24,8 +26,8 @@ while cont != tot:
             else:
                 print(f'\033[31mVocê perdeu, tente novamente um numero {"\033[33mMENOR\033[m"}...\033[m')
         else:
-            print(f'PARABÉNS {pessoas[cont]['nome']}!, Você ganhou.')
+            print(f'PARABÉNS {pessoas.cadastro()[cont]['nome']}!, Você ganhou.')
             break
         print('-' * 40)
     cont += 1
-
+'''

@@ -65,16 +65,16 @@ def idade():
             return ide
 
 
-def cadastro(qtd):
-    lista = list()
-    partici = dict()
-    for c in range(0, qtd):
-        partici['nome'] = nome()
-        if partici['nome'] == '':
-            break
-        partici['idade'] = idade()
-        if partici['idade'] == '':
-            break
-        print('-' * 40)
-        lista.append(partici.copy())
-    return lista
+class Pessoa:
+    def __init__(self, quantidade_pessoa):
+        self.quantidade_pessoa = quantidade_pessoa
+
+    def cadastro(self):
+        with open('nomes.csv', 'a', encoding='utf-8') as arquivo:
+            for cont in range(0, self.quantidade_pessoa):
+                name = nome()
+                ega = idade()
+                arquivo.write(f'{name}, {ega}\n')
+                print('-' * 25)
+
+
