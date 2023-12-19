@@ -25,7 +25,7 @@ while True:
             print('-' * 60)
             Pessoa.cadastros(nome(), idade())
             print('-' * 60)
-
+            break
         elif opcao == 2:
             print('-' * 60)
             print('Pessoa cadastradas'.center(45))
@@ -36,20 +36,20 @@ while True:
             Pessoa.remover_participantes()
             print('-' * 60)
         elif opcao == 4:
-            nomes = []
-            with open('nomes.csv', 'r', encoding='utf-8') as arquivo:
+            participantes = []
+            with open('pessoas.csv', 'r', encoding='utf-8') as arquivo:
                 for linha in arquivo:
                     lista = linha.split(',')
-                    nomes.append(lista)
+                    participantes.append(lista)
 
-            tot = len(nomes)
-            cont = 0
+            total_pessoa = len(participantes)
+            contador = 0
             print('-' * 60)
-            while cont != tot:
+            while contador != total_pessoa:
                 computador = randint(0, 10)
-                print(f'Paricipante {nomes[cont][0]} tem 3 tentativas')
-                for tente in range(1, 4):
-                    print(f'Tentativa - {tente} ')
+                print(f'Paricipante {participantes[contador][0]} tem 3 tentativas')
+                for tentativas in range(1, 4):
+                    print(f'Tentativa - {tentativas} ')
                     jogador = verificacao('Digite um numero (0 à 10):')
                     if jogador < 0:
                         break
@@ -60,12 +60,12 @@ while True:
                         else:
                             print(f'\033[31mVocê perdeu, tente novamente um numero {"\033[33mMENOR\033[m"}...\033[m')
                     else:
-                        print(f'PARABÉNS {nomes[cont][0]}!, Você ganhou.')
+                        print(f'PARABÉNS {participantes[contador][0]}!, Você ganhou.')
                         print('-' * 60)
                         break
                     print('-' * 60)
-                cont += 1
-            if cont == tot:
+                contador += 1
+            if contador == total_pessoa:
                 print('Obrigador por participarem, volte sempre')
                 break
 
