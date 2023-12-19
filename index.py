@@ -5,13 +5,14 @@ from suporte import *
 
 #programa principal
 cabecalho()
+
+print('Antes de começar escolha uma das opção abaixo'.center(65).upper())
+print('[1] - Adiconar participante\n'
+      '[2] - Listar paticipantes\n'
+      '[3] - Remover participantes\n'
+      '[4] - Jogar\n')
+
 while True:
-    print('Antes de começar escolha uma das opção abaixo'.center(65).upper())
-    print('[1] - Adiconar participante\n'
-          '[2] - Listar paticipantes\n'
-          '[3] - Remover participantes\n'
-          '[4] - Jogar\n'
-          '[5] - Sair')
     try:
         opcao = int(input('opção: '))
     except (ValueError, TypeError):
@@ -31,10 +32,12 @@ while True:
             print('Pessoa cadastradas'.center(45))
             Pessoa.listar_pessoas()
             print('-' * 60)
+            break
         elif opcao == 3:
             print('-' * 60)
             Pessoa.remover_participantes()
             print('-' * 60)
+            break
         elif opcao == 4:
             participantes = []
             with open('pessoas.csv', 'r', encoding='utf-8') as arquivo:
@@ -68,10 +71,6 @@ while True:
             if contador == total_pessoa:
                 print('Obrigador por participarem, volte sempre')
                 break
-
-        elif opcao == 5:
-            print('Volte sempre')
-            break
         else:
             print('Opição invalida, tente novamente umas das opção acima')
             print('-' * 75)
