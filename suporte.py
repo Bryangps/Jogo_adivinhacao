@@ -1,3 +1,7 @@
+import csv
+import os
+
+
 def cabecalho():
     print('-' * 70)
     print(f'TENTE ADIVINHAR O NÚMERO DE 0 À 10 QUE ESTOU PENSANDO...'.center(70))
@@ -19,19 +23,6 @@ def verificacao(num):
                 return jogador
             else:
                 print('Erro! Escolha um numero de 0 à 10')
-
-
-def quantidade(msg):
-    while True:
-        try:
-            pessoa = int(input(f'{msg} '))
-        except (ValueError, TypeError):
-            print('Erro! Informe um numero interio')
-        except KeyboardInterrupt:
-            print('\nVolte sempre')
-            return 0
-        else:
-            return pessoa
 
 
 def nome():
@@ -66,15 +57,31 @@ def idade():
 
 
 class Pessoa:
-    def __init__(self, quantidade_pessoa):
-        self.quantidade_pessoa = quantidade_pessoa
+    @staticmethod
+    def cadastros(name, ega):
+        with open('nomes.csv', 'r', encoding='utf-8') as file:
+            leitor = csv.reader(file)
+            palavra_existente = [linha[0] for linha in leitor]
 
-    def cadastro(self):
-        with open('nomes.csv', 'a', encoding='utf-8') as arquivo:
-            for cont in range(0, self.quantidade_pessoa):
-                name = nome()
-                ega = idade()
-                arquivo.write(f'{name}, {ega}\n')
-                print('-' * 25)
+        if name not in palavra_existente:
+            with open('nomes.csv', 'a', encoding='utf-8') as arquivo:
+                escreve = csv.writer(arquivo, lineterminator='\n')
+                escreve.writerow([name, ega])
+                print('Cadastrado com sucesso.')
+        else:
+            print('Já existe')
 
+    @staticmethod
+    def listar_pessoas():
+        with open('nomes.csv', 'r', encoding='utf-8') as arquivo:
+            for linha in arquivo:
+                name, ega = linha.rstrip().split(',')
+                print(f'{name} - {ega} anos')
 
+    @staticmethod
+    def remover_participantes():
+        if not os.path.exists('nomes.csv'):
+            print('Lista de cadastro está vazia')
+        with open('nomes.csv', 'w', encoding='utf-8') as arquivo:
+            arquivo.write(' ')
+            print('Removio com sucesso')
